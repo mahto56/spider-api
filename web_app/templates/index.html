@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+<div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">API DOCUMENTATION</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="options" aria-expanded="false">List <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="options">
+                <li><a href="#navbar-main">All</a></li>
+                <li class="divider"></li>
+                <li><a href="#getemaillist">Get email list</a></li>
+                <li><a href="#postemail">Post email</a></li>
+                
+                
+              </ul>
+            </li>
+            <li>
+              <a href="#">Help</a>
+            </li>
+            
+          </ul>
+        
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#home" >Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="bs-docs-section clearfix">
+    
+    <div class="container-fluid">
+        <h1 id="getemaillist" class="page-header">GET EMAIL LIST</h1>
+
+<p>Used to retreieve emails from database.</p>
+
+<p><strong>URL</strong> : <code>/api/email/</code></p>
+
+<p><strong>Method</strong> : <code>GET</code></p>
+
+<p><strong>Auth required</strong> : NO</p>
+
+<h3 id="successresponse">Success Response</h3>
+
+<p><strong>Code</strong> : <code>200 OK</code></p>
+
+<p><strong>Content example</strong></p>
+
+<pre><code class="json language-json">[
+    {
+        "_id": {
+            "$oid": "59c64b8b5e751139e131d0d2"
+        },
+        "message": "Valid",
+        "email": "user@mail.com",
+        "code": 1
+    },
+    {
+        "_id": {
+            "$oid": "59c64dcc5e75113adac77c99"
+        },
+        "message": "Valid",
+        "code": 1,
+        "email": "user@mail.com",
+
+    },
+]
+</code></pre>
+
+<hr />
+<br />
+<br />
+
+<h1 id="postemail">POST EMAIL</h1>
+
+<p>Used to post a email.</p>
+
+<p><strong>URL</strong> : <code>/api/email/</code></p>
+
+<p><strong>Method</strong> : <code>POST</code></p>
+
+<p><strong>Headers</strong>: <code>Content-Type : application/json</code> </p>
+
+<p><strong>Auth required</strong> : NO</p>
+
+<p><strong>Data constraints</strong></p>
+
+<pre><code class="json language-json">{
+    "email": "[valid email address]",
+    "key": "[valid key]"
+}
+</code></pre>
+
+<p><strong>Data example</strong></p>
+
+<pre><code class="json language-json">{
+    "email":"user@mail.com",
+    "key":"XXXXXXXXXXXXXXXXXXXXXXXX"
+}
+</code></pre>
+
+<h2 id="successresponse-1">Success Response</h2>
+
+<p><strong>Code</strong> : <code>200 OK</code></p>
+
+<p><strong>Content example</strong></p>
+
+<pre><code class="json language-json">{
+    "_id": {
+        "$oid": "59c6acb65e751167aad1a179"
+    },
+    "message": "Valid",
+    "code": 1,
+    "email": "user@mail.com"
+}
+</code></pre>
+
+<h2 id="errorresponse">Error Response</h2>
+
+<p><strong>Condition</strong> : If key not provided.</p>
+
+<p><strong>Code</strong> : <code>200 OK</code></p>
+
+<p><strong>Content</strong> :</p>
+
+<pre><code class="json language-json">{
+    "response": "Unauthorized user"
+}
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<p><strong>Condition</strong> : If email and key missing</p>
+
+<p><strong>Code</strong> : <code>200 OK</code></p>
+
+<p><strong>Content</strong> :</p>
+
+<pre><code class="json language-json">{
+    "response": "request cannot be empty!"
+}
+</code></pre>
+
+<p><br/>
+<br/></p>
+
+<p><strong>Condition</strong> : If no json data sent</p>
+
+<p><strong>Code</strong> : <code>400 BAD REQUEST</code></p>
+
+<p><strong>Content</strong> :</p>
+
+<pre><code class="json language-json">{
+    "message": "Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)"
+}
+</code></pre>
+
+<hr />
+        
+    </div>
+</body>
+</html>
