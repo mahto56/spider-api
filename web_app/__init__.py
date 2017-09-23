@@ -17,7 +17,7 @@ print("MONGO_URL: "+MONGO_URL)
 # Define the WSGI application object
 app = Flask(__name__)
 
-
+app.config['MONGO_URI'] = MONGO_URI
 #Initialize mongoDB connection
 mongo = PyMongo(app)
 
