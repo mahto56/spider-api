@@ -7,7 +7,7 @@ from bson.json_util import dumps
 #Define the Mongo url
 MONGO_URI = os.environ.get('MONGODB_URI')
 
-MONGO_URL = MONGODB_URI
+MONGO_URL = MONGO_URI
 
 print("MONGO_URL: "+MONGO_URL)
 # if not MONGO_URL:
