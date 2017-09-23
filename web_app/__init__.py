@@ -6,18 +6,21 @@ from flask import make_response
 from bson.json_util import dumps
 #Define the Mongo url
 MONGO_URI = os.environ.get('MONGODB_URI')
-
+#MONGO_URI = "mongodb://admin:admin@123@ds149134.mlab.com:49134/heroku_2g2nnp30"
 MONGO_URL = MONGO_URI
 
+if not MONGO_URL:
+    MONGO_URL = "mongodb://localhost:27017/api";
 print("MONGO_URL: "+MONGO_URL)
-# if not MONGO_URL:
-#     MONGO_URL = "mongodb://localhost:27017/api";
 
 
-# Define the WSGI application object
+
+
+#M Define the WSGI application object
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = MONGO_URI
+app.config['MONGO_URI'] = MONGO_URL
+
 #Initialize mongoDB connection
 mongo = PyMongo(app)
 
