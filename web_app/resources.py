@@ -32,7 +32,11 @@ class EmailList(restful.Resource):
             return jsonify(data)
             
         else:
-            data = get_json(url,data)
+            res =  get_json(url,data)
+            print("response:",res);
+            print("data:",data)
+            data['status'] = res['message'];
+            
             print("In resources")
             print(type(data))
             client_id = mongo.db.emails.insert(data)
