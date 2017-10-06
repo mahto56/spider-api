@@ -39,6 +39,7 @@ class EmailList(restful.Resource):
             
             print("In resources")
             print(type(data))
+            del data['key']
             client_id = mongo.db.emails.insert(data)
             print(client_id);
             return mongo.db.emails.find_one({"_id":client_id})
