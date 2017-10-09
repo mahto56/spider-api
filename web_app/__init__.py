@@ -1,5 +1,6 @@
 import os,requests
 from flask import Flask,url_for,render_template,jsonify,request
+from flask_cors import CORS, cross_origin
 import flask_restful as restful
 from flask_pymongo import PyMongo
 from flask import make_response
@@ -17,6 +18,10 @@ print("MONGO_URL: "+MONGO_URI)
 
 #M Define the WSGI application object
 app = Flask(__name__)
+
+#cross origin app
+CORS(app)
+
 
 app.config['MONGO_URI'] = MONGO_URI
 
