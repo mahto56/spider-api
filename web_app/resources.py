@@ -92,8 +92,6 @@ class EmailList(restful.Resource):
     def get(self,db_id):
         current_db = mongo.db[db_id] 
         result = [x for x in current_db.find()]
-        if not result:
-            return jsonify({"response":"collection empty!"});
         return result;
     
     def post(self,db_id):
